@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
 import Image from "next/image";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const Hero = () => {
   const whatsappLink =
@@ -29,10 +29,10 @@ export const Hero = () => {
         <Button
           asChild
           size="lg"
-          className="bg-pink hover:bg-pink/90 text-accent-foreground font-semibold text-base px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+          className="bg-pink hover:bg-pink/90 text-accent-foreground font-semibold text-base px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse-slow"
         >
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-            <Phone className="mr-2 h-5 w-5" />
+            <FaWhatsapp className="mr-2 h-5 w-5" />
             Agende sua Consulta
           </a>
         </Button>

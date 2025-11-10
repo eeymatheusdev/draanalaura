@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Phone, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
+import { FaWhatsapp } from "react-icons/fa";
 
 export const CallToAction = () => {
   const whatsappLink =
@@ -20,12 +21,14 @@ export const CallToAction = () => {
           o sorriso e a aparência que sempre desejou.
         </p>
         <Button
+          asChild
           size="lg"
-          className="bg-pink hover:bg-pink/90 text-accent-foreground font-semibold text-base px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+          className="bg-pink hover:bg-pink/90 text-accent-foreground font-semibold text-base px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105 animate-pulse-slow"
         >
-          <Phone className="mr-2 h-5 w-5" />
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer"></a>
-          Agendar pelo WhatsApp
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <FaWhatsapp className="mr-2 h-5 w-5" />
+            Agendar pelo WhatsApp
+          </a>
         </Button>
       </div>
     </section>
