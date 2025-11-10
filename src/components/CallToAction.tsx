@@ -8,20 +8,20 @@ export const CallToAction = () => {
   return (
     <section
       id="call-to-action"
-      className="py-20 px-4 bg-accent text-accent-foreground"
+      className="py-20 px-4 bg-gradient-to-br from-pink via-white to-beige text-primary"
     >
       <div className="container mx-auto max-w-4xl text-center">
         <Calendar className="w-16 h-16 mx-auto mb-6 animate-fade-in" />
         <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
           Pronto para Transformar seu Sorriso?
         </h2>
-        <p className="text-xl mb-8">
+        <p className="text-xl mb-16 text-foreground">
           Agende sua avaliação e descubra como podemos ajudar você a conquistar
           o sorriso e a aparência que sempre desejou.
         </p>
         <Button
           size="lg"
-          className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-lg px-8 py-6 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
+          className="bg-pink hover:bg-pink/90 text-accent-foreground font-semibold text-base px-6 py-4 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-105"
         >
           <Phone className="mr-2 h-5 w-5" />
           <a href={whatsappLink} target="_blank" rel="noopener noreferrer"></a>

@@ -40,7 +40,10 @@ export const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 px-4 bg-card">
+    <section
+      id="faq"
+      className="py-20 px-4 bg-card bg-gradient-to-br from-pink via-white to-beige"
+    >
       <div className="container mx-auto max-w-4xl">
         <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-4 text-primary">
           Perguntas Frequentes
@@ -54,7 +57,7 @@ export const FAQ = () => {
             <AccordionItem
               key={index}
               value={`item-${index}`}
-              className="border-2 border-primary/20 rounded-lg px-6 data-[state=open]:border-primary/40 transition-all"
+              className="border-2 border-pink/20 rounded-lg px-6 data-[state=open]:border-pink/40 transition-all"
             >
               <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors">
                 {faq.question}
