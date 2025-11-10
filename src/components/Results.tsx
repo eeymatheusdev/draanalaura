@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import resultadoBotox from "@/assets/resultado-botox.jpg";
 import resultadoClareamento from "@/assets/resultado-clareamento.jpg";
 import resultadoRestauracao from "@/assets/resultado-restauracao.jpg";
+import Image from "next/image";
 
 export const Results = () => {
   const results = [
@@ -29,7 +30,8 @@ export const Results = () => {
           Resultados que Transformam
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Veja a transformação real dos nossos pacientes com procedimentos personalizados
+          Veja a transformação real dos nossos pacientes com procedimentos
+          personalizados
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -39,11 +41,13 @@ export const Results = () => {
               className="overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-all hover:shadow-xl group"
             >
               <CardContent className="p-0">
-                <div className="overflow-hidden">
-                  <img
+                {/* Adicionado 'relative' e 'h-64' ao contentor para o Image com fill funcionar */}
+                <div className="overflow-hidden relative h-64">
+                  <Image
                     src={result.image}
                     alt={result.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
                 <div className="p-6">

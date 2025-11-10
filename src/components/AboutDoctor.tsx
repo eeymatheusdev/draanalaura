@@ -1,35 +1,30 @@
 import dentistaFoto from "@/assets/perfil.jpg";
+import Image from "next/image";
 
 export const AboutDoctor = () => {
   return (
     <section id="about-doctor" className="py-20 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="order-2 md:order-1">
-            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-primary">
-              Dra. Ana Laura Moretti
+          <div>
+            <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gold">
+              Dra. Ana Laura
             </h2>
             <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
-              Cirurgiã-Dentista especializada em Clínica Geral e Harmonização
-              Facial, com formação acadêmica de excelência e constante
-              atualização em técnicas e procedimentos de ponta.
-            </p>
-            <p className="text-lg text-foreground/80 mb-4 leading-relaxed">
-              Com anos de experiência, busco sempre oferecer o melhor
-              atendimento, priorizando a segurança, o conforto e a satisfação de
-              cada paciente.
-            </p>
-            <p className="text-lg text-foreground/80 leading-relaxed">
-              Minha missão é transformar sorrisos e realçar a autoestima através
-              de tratamentos personalizados e resultados naturais.
+              Com paixão pela odontologia e dedicação ao bem-estar dos
+              pacientes, Dra. Ana Laura é especialista em Clínico Geral e
+              Harmonização Facial, unindo técnica, arte e cuidado humano para
+              transformar sorrisos e elevar a autoestima.
             </p>
           </div>
-          <div className="order-1 md:order-2">
-            <img
-              src={dentistaFoto}
-              alt="Dra. Ana Laura Moretti"
-              className="rounded-lg shadow-2xl w-full transition-transform duration-500 hover:scale-105"
-            />
+          <div>
+            <div className="flex justify-center md:justify-end">
+              <Image
+                src={dentistaFoto}
+                alt="Dra. Ana Laura Moretti"
+                className="rounded-2xl shadow-2xl w-72 h-80 md:w-80 md:h-96 object-cover border-4 border-pink"
+              />
+            </div>
           </div>
         </div>
       </div>

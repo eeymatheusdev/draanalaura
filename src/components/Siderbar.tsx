@@ -1,15 +1,16 @@
 const navItems = [
-  { href: "#inicio", color: "gold" },
-  { href: "#sobre", color: "pink" },
-  { href: "#agendamento", color: "gold" },
-  { href: "#resultados", color: "pink" },
+  { href: "#home", color: "gold" },
+  { href: "#about-doctor", color: "pink" },
+  { href: "#results", color: "gold" },
+  { href: "#services", color: "pink" },
   { href: "#faq", color: "gold" },
-  { href: "#clinica", color: "pink" },
+  { href: "#about", color: "pink" },
+  { href: "#call-to-action", color: "gold" },
 ] as const;
 
 export default function Sidebar() {
   return (
-    <nav className="fixed top-0 left-0 w-full bg-beige/90 backdrop-blur-sm flex justify-center items-center py-4 z-50 shadow-sm">
+    <nav className="fixed top-0 left-0 w-full bg-beige/80 backdrop-blur-sm flex justify-center items-center py-4 z-50 shadow-sm">
       <div className="flex flex-row gap-8">
         {navItems.map((item, idx) => (
           <a

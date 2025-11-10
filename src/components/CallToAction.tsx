@@ -6,7 +6,10 @@ export const CallToAction = () => {
     "https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta!";
 
   return (
-    <section className="py-20 px-4 bg-accent text-accent-foreground">
+    <section
+      id="call-to-action"
+      className="py-20 px-4 bg-accent text-accent-foreground"
+    >
       <div className="container mx-auto max-w-4xl text-center">
         <Calendar className="w-16 h-16 mx-auto mb-6 animate-fade-in" />
         <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6">
