@@ -40,7 +40,8 @@ export const Hero = () => {
         className="container mx-auto text-center max-w-4xl"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false }}
       >
         <motion.div variants={itemVariants}>
           <Image

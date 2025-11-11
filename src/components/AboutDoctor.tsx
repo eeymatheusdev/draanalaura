@@ -12,7 +12,7 @@ export const AboutDoctor = () => {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gold">
@@ -29,7 +29,7 @@ export const AboutDoctor = () => {
             className="flex justify-center md:justify-end"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
           >
             <Image

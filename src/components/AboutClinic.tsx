@@ -41,7 +41,7 @@ export const AboutClinic = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
         >
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-6 text-primary">
@@ -59,7 +59,7 @@ export const AboutClinic = () => {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: false, margin: "-50px" }}
           variants={{
             visible: { transition: { staggerChildren: 0.15 } },
           }}

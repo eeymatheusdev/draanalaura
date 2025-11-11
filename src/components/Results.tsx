@@ -34,7 +34,7 @@ export const Results = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="text-center mb-20 max-w-2xl mx-auto"
         >
@@ -51,7 +51,7 @@ export const Results = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-5"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
+          viewport={{ once: false, margin: "-50px" }}
           variants={{
             visible: { transition: { staggerChildren: 0.2 } },
           }}

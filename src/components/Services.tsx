@@ -46,7 +46,7 @@ export const Services = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.6 }}
           className="text-center mb-12 max-w-2xl mx-auto"
         >
@@ -65,7 +65,7 @@ export const Services = () => {
               key={index}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
             >
               <Card className="border-2 border-pink transition-all hover:shadow-lg h-full">

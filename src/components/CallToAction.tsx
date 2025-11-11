@@ -18,13 +18,13 @@ export const CallToAction = () => {
         className="container mx-auto max-w-4xl text-center"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <motion.div
           initial={{ scale: 0 }}
           whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{
             type: "spring",
             stiffness: 260,
