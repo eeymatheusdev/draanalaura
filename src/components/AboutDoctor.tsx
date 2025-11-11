@@ -2,18 +2,26 @@
 
 import dentistaFoto from "@/assets/perfil.jpg";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const AboutDoctor = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="about-doctor" className="py-20 px-4 bg-card overflow-hidden">
       <div className="container mx-auto max-w-4xl">
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={
+              shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }
+            }
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false, margin: "-100px" }} // Revertido para false
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { duration: 0.8, ease: "easeOut" }
+            }
           >
             <h2 className="font-serif text-4xl md:text-5xl font-bold mb-6 text-gold">
               Dra. Ana Laura
@@ -27,10 +35,16 @@ export const AboutDoctor = () => {
           </motion.div>
           <motion.div
             className="flex justify-center md:justify-end"
-            initial={{ opacity: 0, x: 50 }}
+            initial={
+              shouldReduceMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }
+            }
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+            viewport={{ once: false, margin: "-100px" }} // Revertido para false
+            transition={
+              shouldReduceMotion
+                ? { duration: 0 }
+                : { duration: 0.8, ease: "easeOut", delay: 0.2 }
+            }
           >
             <Image
               src={dentistaFoto}

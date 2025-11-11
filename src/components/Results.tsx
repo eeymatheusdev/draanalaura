@@ -3,9 +3,11 @@
 import resultadoBotox from "@/assets/resultado-botox.jpg";
 import resultadoClareamento from "@/assets/resultado-clareamento.jpg";
 import resultadoRestauracao from "@/assets/resultado-restauracao.jpg";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const Results = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const results = [
     {
       title: "Toxina Botulínica",
@@ -25,6 +27,21 @@ export const Results = () => {
     },
   ];
 
+  const gridVariants = {
+    visible: {
+      transition: { staggerChildren: shouldReduceMotion ? 0 : 0.2 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: shouldReduceMotion ? 0 : 0.6 },
+    },
+  };
+
   return (
     <section
       id="results"
@@ -32,10 +49,12 @@ export const Results = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={
+            shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false }} // Revertido para false
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6 }}
           className="text-center mb-20 max-w-2xl mx-auto"
         >
           <h2 className="text-2xl md:text-3xl font-semibold text-gold mb-3">
@@ -51,19 +70,14 @@ export const Results = () => {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-5"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-50px" }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.2 } },
-          }}
+          viewport={{ once: false, margin: "-50px" }} // Revertido para false
+          variants={gridVariants}
         >
           {results.map((result, index) => (
             <motion.div
               key={index}
               className="rounded-xl shadow-lg overflow-hidden transition hover:scale-105 w-full bg-white"
-              variants={{
-                hidden: { opacity: 0, y: 50 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-              }}
+              variants={cardVariants}
             >
               <img
                 src={result.image.src}

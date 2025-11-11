@@ -2,9 +2,11 @@
 
 import { Award, Heart, Shield, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const AboutClinic = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const features = [
     {
       icon: Award,
@@ -32,6 +34,26 @@ export const AboutClinic = () => {
     },
   ];
 
+  const gridVariants = {
+    visible: {
+      transition: { staggerChildren: shouldReduceMotion ? 0 : 0.15 },
+    },
+  };
+
+  const cardVariants = {
+    hidden: shouldReduceMotion
+      ? { opacity: 1, scale: 1 }
+      : { opacity: 0, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.5,
+        ease: "backOut",
+      },
+    },
+  };
+
   return (
     <section
       id="about"
@@ -39,10 +61,12 @@ export const AboutClinic = () => {
     >
       <div className="container mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={
+            shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false }} // Revertido para false
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6 }}
         >
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-6 text-primary">
             Sobre a Clínica
@@ -59,23 +83,11 @@ export const AboutClinic = () => {
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: false, margin: "-50px" }}
-          variants={{
-            visible: { transition: { staggerChildren: 0.15 } },
-          }}
+          viewport={{ once: false, margin: "-50px" }} // Revertido para false
+          variants={gridVariants}
         >
           {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              variants={{
-                hidden: { opacity: 0, scale: 0.9 },
-                visible: {
-                  opacity: 1,
-                  scale: 1,
-                  transition: { duration: 0.5, ease: "backOut" },
-                },
-              }}
-            >
+            <motion.div key={index} variants={cardVariants}>
               <Card className="border-2 border-pink hover:border-pink/75 transition-all hover:shadow-lg group h-full">
                 <CardContent className="p-6 text-center flex flex-col h-full">
                   <div className="w-16 h-16 rounded-full bg-pink/80 flex items-center justify-center mb-4 mx-auto group-hover:bg-pink/50 transition-colors shrink-0">

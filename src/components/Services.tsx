@@ -8,9 +8,11 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Smile, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const Services = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const services = [
     {
       icon: Smile,
@@ -44,10 +46,12 @@ export const Services = () => {
     <section id="services" className="py-20 px-4 bg-card">
       <div className="container mx-auto max-w-6xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={
+            shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false }} // Revertido para false
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6 }}
           className="text-center mb-12 max-w-2xl mx-auto"
         >
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-primary mb-4">
@@ -63,10 +67,17 @@ export const Services = () => {
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 50 }}
+              initial={
+                shouldReduceMotion
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 50 }
+              }
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: false, margin: "-50px" }} // Revertido para false
+              transition={{
+                duration: shouldReduceMotion ? 0 : 0.6,
+                delay: shouldReduceMotion ? 0 : index * 0.2,
+              }}
             >
               <Card className="border-2 border-pink transition-all hover:shadow-lg h-full">
                 <CardHeader>

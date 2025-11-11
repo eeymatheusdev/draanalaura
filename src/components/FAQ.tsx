@@ -6,9 +6,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const FAQ = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const faqs = [
     {
       question: "Quanto tempo dura o efeito da toxina botulínica?",
@@ -49,10 +51,12 @@ export const FAQ = () => {
     >
       <div className="container mx-auto max-w-4xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={
+            shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false }} // Revertido para false
+          transition={shouldReduceMotion ? { duration: 0 } : { duration: 0.6 }}
           className="text-center mb-12"
         >
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-center mb-4 text-primary">
@@ -64,10 +68,14 @@ export const FAQ = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={
+            shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, margin: "-50px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: false, margin: "-50px" }} // Revertido para false
+          transition={
+            shouldReduceMotion ? { duration: 0 } : { duration: 0.8, delay: 0.2 }
+          }
         >
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (

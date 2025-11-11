@@ -3,9 +3,11 @@
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const CallToAction = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const whatsappLink =
     "https://wa.me/5511999999999?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta!";
 
@@ -16,21 +18,31 @@ export const CallToAction = () => {
     >
       <motion.div
         className="container mx-auto max-w-4xl text-center"
-        initial={{ opacity: 0, y: 40 }}
+        initial={
+          shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
+        }
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: false }} // Revertido para false
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { duration: 0.8, ease: "easeOut" }
+        }
       >
         <motion.div
-          initial={{ scale: 0 }}
+          initial={shouldReduceMotion ? { scale: 1 } : { scale: 0 }}
           whileInView={{ scale: 1 }}
-          viewport={{ once: false }}
-          transition={{
-            type: "spring",
-            stiffness: 260,
-            damping: 20,
-            delay: 0.2,
-          }}
+          viewport={{ once: false }} // Revertido para false
+          transition={
+            shouldReduceMotion
+              ? { duration: 0 }
+              : {
+                  type: "spring",
+                  stiffness: 260,
+                  damping: 20,
+                  delay: 0.2,
+                }
+          }
         >
           <Calendar className="w-16 h-16 mx-auto mb-6" />
         </motion.div>

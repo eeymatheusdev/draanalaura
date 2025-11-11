@@ -4,30 +4,35 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
 import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const Hero = () => {
   const whatsappLink =
     "https://wa.me/5516994653366?text=Olá,%20gostaria%20de%20agendar%20uma%20consulta!";
 
+  const shouldReduceMotion = useReducedMotion();
+
   // Variantes para animação escalonada
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: shouldReduceMotion ? { opacity: 1 } : { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
-        delayChildren: 0.2,
+        staggerChildren: shouldReduceMotion ? 0 : 0.3,
+        delayChildren: shouldReduceMotion ? 0 : 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: shouldReduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: "easeOut" },
+      transition: {
+        duration: shouldReduceMotion ? 0 : 0.8,
+        ease: "easeOut",
+      },
     },
   };
 
@@ -47,13 +52,17 @@ export const Hero = () => {
           <Image
             src={logo}
             alt="Ana Laura Moretti - Cirurgiã Dentista"
-            className="h-56 md:h-72 w-auto mx-auto mb-12 md:mb-16 transform translate-x-6 md:translate-x-8 transition-transform duration-500 hover:scale-105"
+            // Ajuste para celular: w-56 (224px)
+            // Ajuste para monitores: md:h-72 w-auto (voltando para altura controlada e largura automática para evitar distorção)
+            className="w-80 h-auto md:h-72 md:w-auto mx-auto mb-12 md:mb-16 transform translate-x-3 md:translate-x-7 transition-transform duration-500 hover:scale-105"
             priority
           />
         </motion.div>
 
         <motion.h1
-          className="font-serif text-8xl md:text-6xl text-gold/90 font-bold mb-6"
+          // Ajuste para celular: text-5xl
+          // Ajuste para monitores: md:text-6xl (ou md:text-7xl se preferir maior)
+          className="font-serif text-5xl md:text-6xl text-gold/90 font-bold mb-6"
           variants={itemVariants}
         >
           Sorria com Confiança
