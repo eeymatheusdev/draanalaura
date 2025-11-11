@@ -31,7 +31,6 @@ export const Hero = () => {
       y: 0,
       transition: {
         duration: shouldReduceMotion ? 0 : 0.8,
-        ease: "easeOut",
       },
     },
   };

@@ -49,7 +49,6 @@ export const AboutClinic = () => {
       scale: 1,
       transition: {
         duration: shouldReduceMotion ? 0 : 0.5,
-        ease: "backOut",
       },
     },
   };
